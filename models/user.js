@@ -4,11 +4,12 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: {type: String, unique: true},
   password: String,
+  name: String,
   status: Boolean,
   confirmationCode: {type: String, unique: true},
   email: {type: String, unique: true},
   budget: Number,
-  interest: {type: String, enum: ['Natureza', 'História', 'Exótico', 'Nacional']},
+  interest: { type: Schema.Types.ObjectId, ref: 'Interesse' },
   roteiros: [{ type: Schema.Types.ObjectId, ref: 'Roteiro' }]
 }, {
   timestamps: {
