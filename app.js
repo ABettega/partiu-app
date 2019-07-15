@@ -22,7 +22,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const indexRoutes = require('./routes/index');
-app.use('/', indexRoutes);
+// const indexRoutes = require('./routes/index');
+const interesseRoutes = require('./routes/interesse');
+// app.use('/', indexRoutes);
+app.use('/interesse', interesseRoutes);
 
 app.listen(process.env.PORT, () => console.log(`server is running on port ${process.env.PORT}`));

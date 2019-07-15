@@ -8,7 +8,7 @@ const userSchema = new Schema({
   confirmationCode: {type: String, unique: true},
   email: {type: String, unique: true},
   budget: Number,
-  interest: {type: String, enum: ['Natureza', 'História', 'Exótico', 'Nacional']},
+  interest: { type: Schema.Types.ObjectId, ref: 'Interesse' },
   roteiros: [{ type: Schema.Types.ObjectId, ref: 'Roteiro' }]
 }, {
   timestamps: {
