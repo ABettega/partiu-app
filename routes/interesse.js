@@ -25,8 +25,6 @@ router.get('/edit/:id', (req, res) => {
   .catch(err => console.log(err));
 });
 
-//User.update({_id: result[0]._id}, {status: true})
-
 router.post('/edit/:id', (req, res) => {
   let {id} = req.params;
   let {tipo, aeroportos} = req.body;
