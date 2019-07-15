@@ -9,7 +9,7 @@ const userSchema = new Schema({
   email: {type: String, unique: true},
   budget: Number,
   interest: {type: String, enum: ['Natureza', 'História', 'Exótico', 'Nacional']},
-  roteiros: [String]
+  roteiros: [{ type: Schema.Types.ObjectId, ref: 'Roteiro' }]
 }, {
   timestamps: {
     createdAt: 'created_at',
