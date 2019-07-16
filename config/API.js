@@ -5,7 +5,7 @@ class API {
     this.axiosCall = axios.create({});
   }
 
-  get(destino, dataIda) {
+  get(destino, origem, dataIda) {
     let dataArr = dataIda.split('-');
     let dia = dataArr[2];
     let mes = parseInt(dataArr[1]) - 1;
@@ -16,7 +16,7 @@ class API {
   
     let dataFormatada = `${monthNames[mes]}+${dia}+${ano}`;
   
-    return this.axiosCall.get(`https://apidojo-hipmunk-v1.p.rapidapi.com/flights/create-session?infants_lap=0&children=0&seniors=0&country=US&from0=GRU&to0=${destino}&date0=${dataFormatada}&pax=1&cabin=Coach`, {headers:{'X-RapidAPI-Host': process.env.RAPID_API_HOST, 'X-RapidAPI-Key': process.env.RAPID_API_KEY}})
+    return this.axiosCall.get(`https://apidojo-hipmunk-v1.p.rapidapi.com/flights/create-session?infants_lap=0&children=0&seniors=0&country=US&from0=${origem}&to0=${destino}&date0=${dataFormatada}&pax=1&cabin=Coach`, {headers:{'X-RapidAPI-Host': process.env.RAPID_API_HOST, 'X-RapidAPI-Key': process.env.RAPID_API_KEY}})
     .then(result => {
       let arrVoos = [];
       let {legs, routings, itins, airlines} = result.data;
@@ -31,6 +31,8 @@ class API {
         let invalid = false;
         let voo = {
           price: 0,
+          from: origem,
+          to: destino,
           legs: [],
           agony: 0
         };
