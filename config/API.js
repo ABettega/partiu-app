@@ -1,4 +1,7 @@
 const axios = require('axios');
+const Currency = require('../config/currency');
+
+const apiCurrency = new Currency();
 
 class API {
   constructor() {
@@ -36,7 +39,9 @@ class API {
           legs: [],
           agony: 0
         };
-        voo.price = itins[itin].price;
+        voo.price = (itins[itin].price === undefined) ? 1 : itins[itin].price;
+        
+        
         let route = itins[itin].routing_idens[0];
         voo.agony = itins[itin].agony;
         for (let i = 0; i < routings[route].leg_idens.length; i+= 1) {
@@ -64,7 +69,14 @@ class API {
         return a.agony - b.agony;
       })
       let selectedFlight = arrVoos[0];
-      return selectedFlight;
+      
+      apiCurrency.getBRL(selectedFlight.price).then(e => {
+        console.log('---------------->');
+        
+        selectedFlight.price = e;
+        return selectedFlight;
+      } ).catch(e => e )
+      
     })
     .catch(err => console.log(err));
   }
