@@ -15,7 +15,7 @@ router.get('/main', (req, res) => {
 });
 
 router.post('/main', (req, res) => {
-  let {budget, dataIda, interesse} = req.body;
+  let {budget, dataIda, dataVolta, interesse} = req.body;
 
   let arrDestinos = [];
   let arrVoltas = [];
@@ -42,7 +42,7 @@ router.post('/main', (req, res) => {
 
     arrVoltas.forEach(e => {
       arrFunc.push((callback) => {
-        api.get('GRU', e, dataIda)
+        api.get('GRU', e, dataVolta)
         .then(result => {
           arrVoosVolta.push(result);
           callback();
