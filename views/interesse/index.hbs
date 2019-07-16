@@ -1,4 +1,6 @@
+<div class="admin">
 {{#each interesses}}
   <p>Interesse: {{tipo}}, {{#each airports}}{{this}},{{/each}} <a href="interesse/edit/{{_id}}">Editar</a> | <a href="interesse/delete/{{_id}}">Deletar</a></p>
 {{/each}}
 <a href="interesse/new">Criar novo</a> | <a href="/">Voltar</a>
+</div>

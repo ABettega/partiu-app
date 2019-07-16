@@ -1,3 +1,5 @@
+const http = require('http');
+
 require('dotenv').config();
 const express = require('express');
 const app = express();
@@ -21,6 +23,14 @@ db.once('open', function() {
 
 app.use(morgan('dev'));
 
+app.use(require('node-sass-middleware')({
+  src:  path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  sourceMap: true,
+  debug: true,
+  outputStyle: 'compressed'
+}));
+
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -38,6 +48,7 @@ app.use(flash());
 app.use(config.initialize());
 app.use(config.session());
 
+
 const indexRoutes = require('./routes/index');
 app.use('/', indexRoutes);
 
@@ -50,4 +61,29 @@ app.use('/interesse', interesseRoutes);
 const mainRoutes = require('./routes/main');
 app.use('/', mainRoutes);
 
-app.listen(process.env.PORT, () => console.log(`server is running on port ${process.env.PORT}`));
+let server = http.createServer(app);
+
+
+server.on('error', error => {
+  if (error.syscall !== 'listen') { throw error }
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(`Port ${process.env.PORT} requires elevated privileges`);
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(`Port ${process.env.PORT} is already in use`);
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+});
+
+server.listen(process.env.PORT, () => {
+  console.log(`Listening on http://localhost:${process.env.PORT}`);
+});
+
+// app.listen(process.env.PORT, () => console.log(`server is running on port ${process.env.PORT}`));
