@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
+
 const API = require('../config/API');
 const api = new API();
 const async = require('async');
-
 const Interesse = require('../models/interesse');
 
 router.get('/main', (req, res) => {
@@ -16,7 +16,6 @@ router.get('/main', (req, res) => {
 
 router.get('/main/result', (req, res) => {
   const itins = req.query;
-  console.log(itins);
   res.render('main/result');
   
 });
@@ -70,10 +69,13 @@ router.post('/main', (req, res) => {
             itins.push(itin);
           }
         }
-        itins.forEach(e => {
-          console.log(e);
-        })
-        console.log(itins.ida);
+        // itins.forEach(e => {
+        //   apiCurrency.getBRL(1).then(e => {
+        //     console.log('---------------->');
+        //     console.log(e)
+        //   } ).catch(e => e )
+          
+        // })
         res.render('main/result', {itins});
       });
     }];
