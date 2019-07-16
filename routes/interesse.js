@@ -6,7 +6,6 @@ const Interesse = require('../models/interesse');
 router.get('/', (req, res) => {
   Interesse.find()
   .then(interesses => {
-    console.log(interesses);
     res.render('interesse/index', { interesses });
   })
   .catch(err => console.log(err));
