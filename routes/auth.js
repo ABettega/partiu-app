@@ -6,6 +6,8 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
+const User = require('../models/user')
+
 
 router.get("/login", (req, res, next) => {
   res.render("auth/login", { "message": req.flash("error") });

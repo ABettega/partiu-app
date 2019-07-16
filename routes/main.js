@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
 const API = require('../config/API');
 const api = new API();
+const async = require('async');
+
+const Interesse = require('../models/interesse');
 
 router.get('/main', (req, res) => {
   res.render('main/search');
@@ -10,16 +12,38 @@ router.get('/main', (req, res) => {
 
 router.post('/main', (req, res) => {
   let {budget, dataIda, interesse} = req.body;
-  
-  console.log(dataIda);
 
-  api.get('SFO', dataIda)
+  let arrDestinos = [];
+  let arrVoos = [];
+  let arrFunc = [];
+
+  Interesse.find({tipo: {$eq: interesse}})
   .then(result => {
-    console.log(result);
-    res.redirect('/main');
+    arrDestinos = result[0].airports;
+
+    arrDestinos.forEach(e => {
+      arrFunc.push((callback) => {
+        api.get(e, dataIda)
+        .then(result => {
+          arrVoos.push(result);
+          callback();
+        })
+        .catch(err => console.log(err));      
+      })
+    });
+
+    let arrFunc2 = [function () {
+      async.parallel(arrFunc, () => {
+        console.log(arrVoos)
+        res.redirect('/main');
+      });
+    }];
+
+    async.series(arrFunc2, function () {
+      console.log(arrVoos);
+    })
   })
   .catch(err => console.log(err));
-
 });
 
 module.exports = router;
