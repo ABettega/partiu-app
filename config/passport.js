@@ -3,7 +3,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 
-const User = mongoose.model('User');
+const User = require('../models/user');
 
 passport.use(new LocalStrategy({
   passReqToCallback: true

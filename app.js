@@ -47,4 +47,7 @@ app.use('/auth', authRoutes);
 const interesseRoutes = require('./routes/interesse');
 app.use('/interesse', interesseRoutes);
 
+const mainRoutes = require('./routes/main');
+app.use('/', mainRoutes);
+
 app.listen(process.env.PORT, () => console.log(`server is running on port ${process.env.PORT}`));
