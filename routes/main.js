@@ -14,6 +14,13 @@ router.get('/main', (req, res) => {
   .catch(err => console.log(err));
 });
 
+router.get('/main/result', (req, res) => {
+  const itins = req.query;
+  console.log(itins);
+  res.render('main/result');
+  
+});
+
 router.post('/main', (req, res) => {
   let {budget, dataIda, interesse} = req.body;
 
@@ -64,7 +71,8 @@ router.post('/main', (req, res) => {
         itins.forEach(e => {
           console.log(e);
         })
-        res.render('/main/result', {itins});
+        console.log(itins.ida);
+        res.render('main/result', {itins});
       });
     }];
 

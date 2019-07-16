@@ -1,15 +1,39 @@
+//bootstrap
 @import "./../../node_modules/bootstrap-scss/bootstrap.scss";
+//fonts
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans|Rock+Salt&display=swap');
+
+//variables
+
+$primary-color: #1c2b39;
+$secondary-color: #ed1650;
+
+
+
 body {
-    margin: 0;
-    padding: 0;
-    
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans', sans-serif;
 }
 .admin {
-    background: gray;
+  background: gray;
 }
 .logged {
-
-    background: lightcoral;
-    background-color: yellow;
+  background: lightcoral;
+  background-color: yellow;
 }
-
+.bd-navbar {
+  background: $primary-color;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+    &.active {
+        color: $secondary-color;
+        font-family: 'Rock Salt', cursive;
+    }
+}
+header {
+    .btn {
+        color: white;
+    }
+}
