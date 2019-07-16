@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const interesseSchema = new Schema({
-  tipo: {type: String, enum: ['Natureza', 'História', 'Exótico', 'Nacional']},
+  tipo: String,
   airports: [String],
 }, {
   timestamps: {

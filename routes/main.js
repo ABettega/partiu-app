@@ -7,23 +7,31 @@ const async = require('async');
 const Interesse = require('../models/interesse');
 
 router.get('/main', (req, res) => {
-  res.render('main/search');
+  Interesse.find()
+  .then(result => {
+    res.render('main/search', { result });
+  })
+  .catch(err => console.log(err));
 });
 
 router.post('/main', (req, res) => {
   let {budget, dataIda, interesse} = req.body;
 
   let arrDestinos = [];
+  let arrVoltas = [];
   let arrVoos = [];
   let arrFunc = [];
+  let arrVoosVolta = [];
+  let itins = [];
 
   Interesse.find({tipo: {$eq: interesse}})
   .then(result => {
     arrDestinos = result[0].airports;
+    arrVoltas = result[0].airports;
 
     arrDestinos.forEach(e => {
       arrFunc.push((callback) => {
-        api.get(e, dataIda)
+        api.get(e, 'GRU', dataIda)
         .then(result => {
           arrVoos.push(result);
           callback();
@@ -32,10 +40,31 @@ router.post('/main', (req, res) => {
       })
     });
 
+    arrVoltas.forEach(e => {
+      arrFunc.push((callback) => {
+        api.get('GRU', e, dataIda)
+        .then(result => {
+          arrVoosVolta.push(result);
+          callback();
+        })
+        .catch(err => console.log(err));      
+      })
+    });
+
     let arrFunc2 = [function () {
       async.parallel(arrFunc, () => {
-        console.log(arrVoos)
-        res.redirect('/main');
+        arrVoos.sort((a, b) => {a.to.localeCompare(b.to)});
+        arrVoosVolta.sort((a, b) => {a.from.localeCompare(b.from)});
+        for (let i = 0; i < arrVoos.length; i += 1) {
+          let vooIda = arrVoos[i];
+          let vooVolta = arrVoosVolta[i];
+          let itin = {ida: vooIda, volta: vooVolta};
+          itins.push(itin);
+        }
+        itins.forEach(e => {
+          console.log(e);
+        })
+        res.render('/main/result', {itins});
       });
     }];
 
