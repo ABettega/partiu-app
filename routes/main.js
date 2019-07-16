@@ -65,8 +65,10 @@ router.post('/main', (req, res) => {
         for (let i = 0; i < arrVoos.length; i += 1) {
           let vooIda = arrVoos[i];
           let vooVolta = arrVoosVolta[i];
-          let itin = {ida: vooIda, volta: vooVolta};
-          itins.push(itin);
+          if (vooIda !== undefined && vooVolta !== undefined) {
+            let itin = {ida: vooIda, volta: vooVolta};
+            itins.push(itin);
+          }
         }
         itins.forEach(e => {
           console.log(e);
@@ -76,9 +78,7 @@ router.post('/main', (req, res) => {
       });
     }];
 
-    async.series(arrFunc2, function () {
-      console.log(arrVoos);
-    })
+    async.series(arrFunc2);
   })
   .catch(err => console.log(err));
 });
