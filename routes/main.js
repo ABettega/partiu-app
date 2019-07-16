@@ -63,8 +63,11 @@ router.post('/main', (req, res) => {
         arrVoosVolta.sort((a, b) => {a.from.localeCompare(b.from)});
         for (let i = 0; i < arrVoos.length; i += 1) {
           let vooIda = arrVoos[i];
+          console.log('ida: ', vooIda);
           let vooVolta = arrVoosVolta[i];
+          console.log('volta: ', vooVolta);
           if (vooIda !== undefined && vooVolta !== undefined) {
+            console.log('tem ida e volta')
             let itin = {ida: vooIda, volta: vooVolta};
             itins.push(itin);
           }
@@ -76,6 +79,7 @@ router.post('/main', (req, res) => {
         //   } ).catch(e => e )
           
         // })
+        console.log(itins)
         res.render('main/result', {itins});
       });
     }];

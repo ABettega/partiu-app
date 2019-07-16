@@ -69,13 +69,18 @@ class API {
         return a.agony - b.agony;
       })
       let selectedFlight = arrVoos[0];
+      if (!selectedFlight) {
+        console.log(destino, origem, dataIda)
+      }
+      if (selectedFlight){
+        apiCurrency.getBRL(selectedFlight.price).then(e => {
+          console.log('---------------->');
+          
+          selectedFlight.price = e;
+          return selectedFlight;
+        } ).catch(e => e )
+      }
       
-      apiCurrency.getBRL(selectedFlight.price).then(e => {
-        console.log('---------------->');
-        
-        selectedFlight.price = e;
-        return selectedFlight;
-      } ).catch(e => e )
       
     })
     .catch(err => console.log(err));
