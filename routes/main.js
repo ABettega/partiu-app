@@ -7,7 +7,11 @@ const async = require('async');
 const Interesse = require('../models/interesse');
 
 router.get('/main', (req, res) => {
-  res.render('main/search');
+  Interesse.find()
+  .then(result => {
+    res.render('main/search', { result });
+  })
+  .catch(err => console.log(err));
 });
 
 router.post('/main', (req, res) => {
