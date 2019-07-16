@@ -1,0 +1,10 @@
+<h2>Results</h2>
+
+
+           
+{{#each itins}}
+            <h3>Viaje para {{ this.ida.to }}</h3>
+            <h6>Por apenas: {{this.ida.price }}</h6>
+            <h6>Escalas: {{ this.ida.legs.length }}</h6>
+           
+{{/each}}
