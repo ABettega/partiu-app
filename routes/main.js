@@ -15,11 +15,12 @@ router.get('/main', (req, res) => {
   .catch(err => console.log(err));
 });
 
-router.get('/main/result', (req, res) => {
-  // const itins = req.query;
-  res.render('main/result');
+// router.post('/main/result', (req, res) => {
+//   console.log(req.body);
+//   const {itins} = req.body;
+//   res.render('main/result', {itins});
   
-});
+// });
 
 router.post('/main', (req, res) => {
   let {budget, dataIda, dataVolta, interesse} = req.body;
@@ -74,14 +75,12 @@ router.post('/main', (req, res) => {
         .then(result => {
           itins.forEach(itin => {
             let rate = parseFloat(result).toFixed(2);
-            console.log(rate)
             let precoIda = parseFloat(itin.ida.price * rate).toFixed(2);
             let precoVolta = parseFloat(itin.volta.price * rate).toFixed(2);
             itin.ida.price = precoIda;
             itin.volta.price = precoVolta;
-            console.log(`Preço ida novo: ${itin.ida.price} Preço volta novo: ${itin.volta.price} `)
           })
-          res.render('main');
+          res.render('main/result', {itins});
         })
         .catch(err => console.log(err));
       });
