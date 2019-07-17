@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-
 const API = require('../config/API');
 const api = new API();
 const async = require('async');
 const Interesse = require('../models/interesse');
+const Currency = require('../config/currency');
+const apiCurrency = new Currency();
 
 router.get('/main', (req, res) => {
   Interesse.find()
@@ -15,7 +16,7 @@ router.get('/main', (req, res) => {
 });
 
 router.get('/main/result', (req, res) => {
-  const itins = req.query;
+  // const itins = req.query;
   res.render('main/result');
   
 });
@@ -63,27 +64,28 @@ router.post('/main', (req, res) => {
         arrVoosVolta.sort((a, b) => {a.from.localeCompare(b.from)});
         for (let i = 0; i < arrVoos.length; i += 1) {
           let vooIda = arrVoos[i];
-          console.log('ida: ', vooIda);
           let vooVolta = arrVoosVolta[i];
-          console.log('volta: ', vooVolta);
           if (vooIda !== undefined && vooVolta !== undefined) {
-            console.log('tem ida e volta')
             let itin = {ida: vooIda, volta: vooVolta};
             itins.push(itin);
           }
         }
-        // itins.forEach(e => {
-        //   apiCurrency.getBRL(1).then(e => {
-        //     console.log('---------------->');
-        //     console.log(e)
-        //   } ).catch(e => e )
-          
-        // })
-        console.log(itins)
-        res.render('main/result', {itins});
+        apiCurrency.getBRL()
+        .then(result => {
+          itins.forEach(itin => {
+            let rate = parseFloat(result).toFixed(2);
+            console.log(rate)
+            let precoIda = parseFloat(itin.ida.price * rate).toFixed(2);
+            let precoVolta = parseFloat(itin.volta.price * rate).toFixed(2);
+            itin.ida.price = precoIda;
+            itin.volta.price = precoVolta;
+            console.log(`Preço ida novo: ${itin.ida.price} Preço volta novo: ${itin.volta.price} `)
+          })
+          res.render('main');
+        })
+        .catch(err => console.log(err));
       });
     }];
-
     async.series(arrFunc2);
   })
   .catch(err => console.log(err));
