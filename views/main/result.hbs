@@ -1,8 +1,12 @@
 <h2>Results</h2>
            
 {{#each itins}}
+  {{#if this.hotel.precoTotal}}
             <h3>Viaje para {{ this.ida.to }}</h3>
             <h6>Por apenas: {{this.ida.price }}</h6>
             <h6>Escalas: {{ this.ida.legs.length }}</h6>
-           
+           Preco Hotel - {{this.hotel.precoTotal}}
+           Preco Ida - {{this.ida.price}}
+           Preco Volta - {{this.volta.price}}
+  {{/if}}
 {{/each}}
