@@ -77,9 +77,10 @@ class API {
           console.log('---------------->');
           
           selectedFlight.price = e;
-          return selectedFlight;
+          
         } ).catch(e => e )
       }
+      return selectedFlight;
       
       
     })
