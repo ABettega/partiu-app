@@ -85,6 +85,9 @@ class API {
   }
 
   getDestino(voo, dataVolta) {
+    if (voo === undefined) {
+      return {};
+    }
     let legs = voo['legs'];
     let dataChegada = legs[legs.length - 1].arrive.split('T')[0];
 
@@ -101,7 +104,7 @@ class API {
       .catch(err => console.log(err));
   }
 
-  getMelhorHotel(codigoSessao, dataIda, dataVolta) {
+  getMelhorHotel(codigoSessao) {
     return this.axiosCall.get(`https://apidojo-kayak-v1.p.rapidapi.com/hotels/poll?currency=USD&searchid=${codigoSessao}`, {
         headers: {
           'X-RapidAPI-Host': process.env.KAJAK_API_HOST,
@@ -120,25 +123,6 @@ class API {
               if (result.data['error'] === true) {
                 return {}
               }
-              // let hotel = {
-              //   diasEstadia: diff,
-              //   precoTotal: 0,
-              //   estrelas: 0,
-              //   reviews: 0,
-              //   rating: ''
-              // }
-              // result.data['hotelset'].forEach(hotel => {
-              //   if (hotel.ratinglabel === 'Excellent' || hotel.ratinglabel === 'Good') {
-              //     if (hotel.reviewcount > hotel.reviews) {
-              //       hotel.reviews = hotel.reviewcount;
-              //       if (hotel.ratinglabel === 'Excellent')
-              //         hotel.rating = 'Excelente'
-              //       else
-              //         hotel.rating = 'Bom';
-              //       hotel.estrelas = hotel.stars;
-              //     }
-              //   }
-              // });
               return result.data['hotelset'];
             })
             .catch(err => console.log(err))
@@ -146,25 +130,6 @@ class API {
           if (result.data['error'] === true) {
             return {}
           }
-          // let hotel = {
-          //   diasEstadia: diff,
-          //   precoTotal: 0,
-          //   estrelas: 0,
-          //   reviews: 0,
-          //   rating: ''
-          // }
-          // result.data['hotelset'].forEach(hotel => {
-          //   if (hotel.ratinglabel === 'Excellent' || hotel.ratinglabel === 'Good') {
-          //     if (hotel.reviewcount > hotel.reviews) {
-          //       hotel.reviews = hotel.reviewcount;
-          //       if (hotel.ratinglabel === 'Excellent')
-          //         hotel.rating = 'Excelente'
-          //       else
-          //         hotel.rating = 'Bom';
-          //       hotel.estrelas = hotel.stars;
-          //     }
-          //   }
-          // });
           return result.data['hotelset'];
         }
       })

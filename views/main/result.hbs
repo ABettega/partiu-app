@@ -1,12 +1,32 @@
 <h2>Results</h2>
-           
+
 {{#each itins}}
   {{#if this.hotel.precoTotal}}
-            <h3>Viaje para {{ this.ida.to }}</h3>
-            <h6>Por apenas: {{this.ida.price }}</h6>
-            <h6>Escalas: {{ this.ida.legs.length }}</h6>
-           Preco Hotel - {{this.hotel.precoTotal}}
-           Preco Ida - {{this.ida.price}}
-           Preco Volta - {{this.volta.price}}
+  <p>Dados Hotel</p>
+  <p id="hotelLink{{this.id}}" value="{{this.hotel.linkAcesso}}">Link Hotel: {{this.hotel.linkAcesso}}</p>
+  <p id="hotelFoto{{this.id}}" value="{{this.hotel.foto}}">URL Foto Hotel: {{this.hotel.foto}}</p>
+  <p id="hotelNome{{this.id}}" value="{{this.hotel.nomeHotel}}">Nome Hotel: {{this.hotel.nomeHotel}}</p>
+  <p id="hotelCidade{{this.id}}" value="{{this.hotel.cidade}}">Cidade Hotel: {{this.hotel.cidade}}</p>
+  <p id="hotelPreco{{this.id}}" value="{{this.hotel.precoTotal}}">Preço Hotel: {{this.hotel.precoTotal}}</p>
+  <p id="hotelEstrelas{{this.id}}" value="{{this.hotel.estrelas}}">Estrelas Hotel: {{this.hotel.estrelas}}</p>
+  <p id="hotelRating{{this.id}}" value="{{this.hotel.rating}}<">Rating Hotel: {{this.hotel.rating}}</p>
+  <p id="hotelReviews{{this.id}}" value="{{this.hotel.reviews}}">Reviews Hotel: {{this.hotel.reviews}}</p>
+  <p>Dados Itinerário</p>
+  <p id="itinCusto{{this.id}}" value="{{this.custo}}">Custo Vôos: {{this.custo}}</p>
+  <p id="itinDiaIda{{this.id}}" value="{{this.diaIda}}">Dia de Ida: {{this.diaIda}}</p>
+  <p id="itinDiaVolta{{this.id}}" value="{{this.diaVolta}}">Dia de Volta: {{this.diaVolta}}</p>
+  <p id="itinOrigem{{this.id}}" value="{{this.origem}}">Origem: {{this.origem}}</p>
+  <p id="itinDestino{{this.id}}" value="{{this.destino}}">Destino: {{this.destino}}</p>
+  <p>Dados Voo Ida</p>
+  <p id="idaPreco{{this.id}}" value="{{this.ida.price}}">Preço Ida: {{this.ida.price}}</p>
+  <p id="idaFrom{{this.id}}" value="{{this.ida.from}}">Origem Ida: {{this.ida.from}}</p>
+  <p id="idaTo{{this.id}}" value="{{this.ida.to}}">Destino Ida: {{this.ida.to}}</p>
+
+  <p>Dados Voo Volta</p>
+  <p id="voltaPreco{{this.id}}" value="{{this.volta.price}}">Preço Ida: {{this.volta.price}}</p>
+  <p id="voltaFrom{{this.id}}" value="{{this.volta.from}}">Origem Ida: {{this.volta.from}}</p>
+  <p id="voltaTo{{this.id}}" value="{{this.volta.to}}">Destino Ida: {{this.volta.to}}</p>
+
+  <button type="submit" id="button{{this.id}}" class="btnEventoSalvar">♥ Favoritar esse roteiro ♥</button>
   {{/if}}
 {{/each}}
