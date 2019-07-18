@@ -1,13 +1,33 @@
-<form action="/main" method="POST">
-  <p><label for="budget">Budget:<input type="text" name="budget"></label></p>
-  <p><label for="dataIda">Data Ida:<input type="date" name="dataIda"></label></p>
-  <p><label for="dataVolta">Data Volta:<input type="date" name="dataVolta"></label></p>
-  <p><label for="interesse">Destino:</label>
-    <select name="interesse" id="interesse">
-{{#each result}}
+<div class="bg">
+  <form action="/main" method="POST" class="form-signin">
+    <h2 class="cover-heading urban">Don't know where to go?</h2>
+    <p class="lead">Planning a trip was never that easy, book unique places you have dreamed about.</p>
+    <label for="budget">How much do you want to spend?</label>
+    <input type="text" name="budget" value="" placeholder="R$ 10.000,00" class="form-control">
+
+    <div class="d-flex">
+      <label for="dataIda">When to leave?
+      <input type="date" name="dataIda" class="form-control"></label>
+      <label for="dataVolta">And be back?
+      <input type="date" name="dataVolta" class="form-control"></label>
+    </div>
+    <label for="interesse">What do you like?</label>
+    <select name="interesse" id="interesse" class="form-control">
+      {{#each result}}
       <option value="{{tipo}}">{{tipo}}</option>
-{{/each}}
+      {{/each}}
     </select>
-  </p>
-  <button type="submit">Send Data</button>
-</form>
+    <button type="submit" class="btn btn-lg btn-primary logo">Partiu!</button>
+  </form>
+</div>
+{{!-- <div class="content">
+<h1 class="cover-heading urban">Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. </p>
+    <h1 class="cover-heading urban">Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. </p>
+    <h1 class="cover-heading urban">Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. </p>
+    <h1 class="cover-heading urban">Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. </p>
+
+</div> --}}
