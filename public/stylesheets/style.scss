@@ -90,7 +90,7 @@ body {
       .bg {
         display: flex;
         height: 100%;
-        form {
+        form, .listing {
           background: white;
           background: #ffffff;
           border-radius: 4px;
@@ -134,10 +134,24 @@ body {
             border-color: $secondary-color;
             &.logo {
                 font-family: $rock;
+                float: right;
             }
             &:hover {
               background-color: $primary-color;
               border-color: $primary-color;
+            }
+
+          }
+          .btn-secondary {
+            margin-top: $gutter;
+            background-color: $primary-color;
+              border-color: $primary-color;
+            &.logo {
+                font-family: $rock;
+            }
+            &:hover {
+              background-color: $secondary-color;
+            border-color: $secondary-color;
             }
 
           }

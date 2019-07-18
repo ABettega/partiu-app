@@ -1,8 +1,16 @@
 <div class="admin">
-<form method="POST" action="/interesse/new">
-  <p><label for="tipo">Nome do interesse: <input type="text" name="tipo"></label></p>
-  <p><label for="aeroportos">Aeroportos (Separar por vírgula): <input type="text" name="aeroportos"></label></p>
-  <p><button type="submit">Send Data</button></p>
+
+</div>
+<div class="bg">
+  <form method="POST" action="/interesse/new" class="form-signin">
+  <label for="tipo">Nome do interesse: </label>
+  <input type="text" name="tipo" class="form-control"><br>
+  <label for="aeroportos">Aeroportos (Separar por vírgula): </label>
+  <input type="text" name="aeroportos" class="form-control">
+  
+  <a href="/interesse"><button type="submit" class="btn btn-lg btn-secondary logo">Voltar</button></a>
+  <button type="submit" class="btn btn-lg btn-primary logo">Enviar</button>
 </form>
-<a href="/interesse">Voltar</a>
+
+
 </div>
