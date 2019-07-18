@@ -49,7 +49,6 @@ passport.use(new FacebookStrategy({
         email: profile.email
 
       });
-      console.log(profile);
       newUser.save()
         .then((user) => {
           cb(null, newUser);
@@ -57,7 +56,5 @@ passport.use(new FacebookStrategy({
     })
     .catch(err => console.log(err));
 }));
-
-
 
 module.exports = passport;

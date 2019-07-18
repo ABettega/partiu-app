@@ -7,8 +7,18 @@ const Interesse = require('../models/interesse');
 const Roteiro = require('../models/roteiro');
 const Currency = require('../config/currency');
 const apiCurrency = new Currency();
-const ensureLogin = require("connect-ensure-login");
+const ensureLogin = require('connect-ensure-login');
 const DateDiff = require('date-diff');
+
+function ensureUserLoggedIn() {
+  return function(req, res, next) {
+    if (req.isAuthenticated()) {
+      return next();
+    } else {
+      res.redirect('/');
+    }
+  }
+}
 
 router.get('/main', (req, res) => {
   Interesse.find()
@@ -20,7 +30,7 @@ router.get('/main', (req, res) => {
     .catch(err => console.log(err));
 });
 
-router.post('/main/favorite', ensureLogin.ensureLoggedIn(), (req, res) => {
+router.post('/main/favorite', ensureUserLoggedIn(), (req, res, next) => {
   let {
     itinCusto,
     itinDiaIda,
@@ -48,9 +58,12 @@ router.post('/main/favorite', ensureLogin.ensureLoggedIn(), (req, res) => {
     hotel: hotelBanco
   });
 
-  console.log('salvar no banco');
-
-  res.redirect('/');
+  // roteiro.save()
+  // .then(() => {
+  //   res.redirect('/');
+  // })
+  // .catch(err => console.log(err))
+    res.redirect('/');
 });
 
 router.post('/main', (req, res) => {

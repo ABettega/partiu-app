@@ -76,7 +76,7 @@ class API {
         })
         let selectedFlight = arrVoos[0];
         if (!selectedFlight) {
-          console.log(destino, origem, dataIda)
+          // console.log(destino, origem, dataIda)
         } else {
           return selectedFlight;
         }

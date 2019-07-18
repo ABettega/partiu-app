@@ -63,24 +63,7 @@ router.post("/signup", (req, res, next) => {
     .catch((error) => {
       next(error);
     });
-
-  
 });
-
-
-// router.get("/confirmation/:code", (req, res) => {
-//   const { code } = req.params;
-//   User.find({ confirmationCode: { $eq: code } })
-//     .then(result => {
-//       User.update({ _id: result[0]._id }, { status: true })
-//         .then(() => {
-//           res.render('confirmation', result[0]);
-//         })
-//         .catch(err => console.log(err));
-//     })
-//     .catch(err => console.log(err));
-// });
-
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/auth/profile',
