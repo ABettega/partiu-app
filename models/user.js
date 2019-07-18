@@ -9,6 +9,8 @@ const userSchema = new Schema({
   confirmationCode: {type: String, unique: true},
   email: {type: String, unique: true},
   budget: Number,
+  facebookId: String,
+  picture: String,
   interest: { type: Schema.Types.ObjectId, ref: 'Interesse' },
   roteiros: [{ type: Schema.Types.ObjectId, ref: 'Roteiro' }]
 }, {
