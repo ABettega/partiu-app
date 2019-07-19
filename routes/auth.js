@@ -83,7 +83,7 @@ router.post("/signup", (req, res, next) => {
 
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/auth/profile',
+  successRedirect: '/interesse',
   failureRedirect: '/auth/login',
   failureFlash: true,
   passReqToCallback: true,
@@ -92,7 +92,7 @@ router.post('/login', passport.authenticate('local', {
 router.get('/facebook', passport.authenticate('facebook'));
 
 router.get('/facebook/callback', passport.authenticate('facebook', {
-  successRedirect: '/auth/profile',
+  successRedirect: '/interesse',
   failureRedirect: '/',
 }));
 

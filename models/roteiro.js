@@ -2,14 +2,21 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const roteiroSchema = new Schema({
-  cost: Number,
-  legs: [{
-    departure: String,
-    arrival: String,
-    from: String,
-    to: String,
-    airline: String
-  }],
+  custoTotal: Number,
+  origem: String,
+  destino: String,
+  diaIda: String,
+  diaVolta: String,
+  hotel: {
+    nomeHotel: String,
+    custoDiarias: Number,
+    estrelas: Number,
+    rating: String,
+    reviews: Number,
+    cidade: String,
+    foto: String,
+    linkAcesso: String,
+  },
 }, {
   timestamps: {
     createdAt: 'created_at',

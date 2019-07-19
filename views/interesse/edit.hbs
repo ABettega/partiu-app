@@ -1,7 +1,7 @@
-<div class="admin">
-<form method="POST" action="/interesse/edit/{{_id}}">
-  <p><label for="tipo">Nome do interesse: <input type="text" name="tipo" value="{{tipo}}"></label></p>
-  <p><label for="aeroportos">Aeroportos (Separar por vírgula): <input type="text" name="aeroportos" value="{{airports}}"></label></p>
-  <p><button type="submit">Send Data</button></p>
+<div class="bg admin">
+<form method="POST" action="/interesse/edit/{{_id}}" class="form-signin">
+  <p><label for="tipo">Nome do interesse: </label><input type="text" name="tipo" value="{{tipo}}" class="form-signin"></p>
+  <p><label for="aeroportos">Aeroportos (Separar por vírgula): </label><input type="text" name="aeroportos" value="{{airports}}" class="form-signin"></p>
+  <p><button type="submit" class="btn btn-lg btn-primary logo">Enviar</button></p>
 </form>
 </div>

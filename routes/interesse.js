@@ -1,25 +1,27 @@
 const express = require('express');
+const passport = require('passport');
+const ensureLogin = require('connect-ensure-login');
 const router = express.Router();
 
 const Interesse = require('../models/interesse');
 
-router.get('/', (req, res) => {
+router.get('/', ensureLogin.ensureLoggedIn(), (req, res) => {
   Interesse.find()
   .then(interesses => {
-    res.render('interesse/index', { interesses });
+    res.render('interesse/index', { interesses, user: req.user});
   })
   .catch(err => console.log(err));
 });
 
-router.get('/new', (req, res) => {
-  res.render('interesse/new');
+router.get('/new', ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render('interesse/new', { user: req.user});
 });
 
-router.get('/edit/:id', (req, res) => {
+router.get('/edit/:id', ensureLogin.ensureLoggedIn(), (req, res) => {
   let {id} = req.params;
   Interesse.findById(id)
   .then(interesse => {
-    res.render('interesse/edit', interesse);
+    res.render('interesse/edit', { interesse, user: req.user});
   })
   .catch(err => console.log(err));
 });
