@@ -2,12 +2,12 @@
   
 <form action="/auth/login" method="POST" id="form-container" class="form-signin">
 <h2>Entre na sua conta</h2>
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+  <label for="username">Usuário</label>
+  <input id="username" type="text" name="username" placeholder="Marco Polo">
 
   <br>
 
-  <label for="password">Password</label>
+  <label for="password">Senha</label>
   <input id="password" type="password" name="password" placeholder="Your password">
 
   {{#if message }}
@@ -17,10 +17,10 @@
  
   <div class="d-flex log">
     <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
+    Ainda não tem uma conta?
+    <a href="/auth/signup">Registrar</a>
   </p>
-  <a href="/auth/facebook" class="btn btn-md btn-primary fb-login-button">Log In with Facebook</a>
+  <a href="/auth/facebook" class="btn btn-md btn-primary fb-login-button">Entrar com o Facebook</a>
   
   
   </div>

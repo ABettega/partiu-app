@@ -1,17 +1,17 @@
 <div class="bg search-bg">
   <form action="/main" method="POST" class="form-signin">
-    <h2 class="cover-heading urban">Don't know where to go?</h2>
-    <p class="lead">Planning a trip was never that easy, book unique places you have dreamed about.</p>
-    <label for="budget">How much do you want to spend?</label>
+    <h2 class="cover-heading urban">Não sabe para onde ir?</h2>
+    <p class="lead">Planejar uma viagem nunca foi tão fácil, reserve lugares únicos que você sempre sonhou!</p>
+    <label for="budget">Quanto você quer gastar?</label>
     <input type="text" name="budget" value="" placeholder="R$ 10.000,00" class="form-control">
 
     <div class="d-flex">
-      <label for="dataIda">When to leave?
+      <label for="dataIda">Quando pode sair?
       <input type="date" name="dataIda" class="form-control"></label>
-      <label for="dataVolta">And be back?
+      <label for="dataVolta">E voltar?
       <input type="date" name="dataVolta" class="form-control"></label>
     </div>
-    <label for="interesse">What do you like?</label>
+    <label for="interesse">Do que você gosta?</label>
     <select name="interesse" id="interesse" class="form-control">
       {{#each result}}
       <option value="{{tipo}}">{{tipo}}</option>
