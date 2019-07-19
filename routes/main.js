@@ -137,7 +137,8 @@ router.post('/main', (req, res) => {
                 diaIda: diaIda,
                 diaVolta: diaVolta,
                 origem,
-                destino
+                destino,
+                airline: vooIda.legs[0].airline
               };
               itins.push(itin);
             }
@@ -149,6 +150,7 @@ router.post('/main', (req, res) => {
                 let precoIda = parseFloat(itin.ida.price * rate).toFixed(2);
                 let precoVolta = parseFloat(itin.volta.price * rate).toFixed(2);
                 let custoTotal = parseFloat(itin.custo * rate).toFixed(2);
+                let custoChange = itin.custo * rate;
                 itin.ida.price = precoIda;
                 itin.volta.price = precoVolta;
                 itin.custo = custoTotal;
@@ -157,6 +159,8 @@ router.post('/main', (req, res) => {
                 let voo2 = itin.volta['legs'];
                 let ida = voo1[voo1.length - 1].arrive.split('T')[0].split('-');
                 let volta = voo2[voo2.length - 1].depart.split('T')[0].split('-');
+                itin.diaIda = ida[2] + '/' + ida[1] + '/' + ida[0];
+                itin.diaVolta = volta[2] + '/' + volta[1] + '/' + volta[0];
                 let data1 = new Date(ida[0], ida[1] - 1, ida[2]);
                 let data2 = new Date(volta[0], volta[1] - 1, volta[2]);
                 let diff = new DateDiff(data2, data1);
@@ -176,7 +180,7 @@ router.post('/main', (req, res) => {
                             hotel.foto = 'http://www.kayak.com' + h.thumburl;
                             hotel.nomeHotel = h.name;
                             hotel.cidade = h.city;
-                            hotel.precoTotal = parseFloat(totalHotel).toFixed(2);
+                            hotel.precoTotal = parseFloat(totalHotel).toLocaleString('pt-BR');
                             if (hoteis.ratinglabel === 'Excellent')
                               hotel.rating = 'Excelente'
                             else if (hoteis.ratinglabel === 'Good')
@@ -184,6 +188,10 @@ router.post('/main', (req, res) => {
                             else
                               hotel.rating = 'Bom'
                             hotel.estrelas = h.stars;
+                            itin.custoTotal = parseFloat(parseFloat(custoChange + totalHotel).toFixed(2)).toLocaleString('pt-BR');
+                            itin.custoTotal = itin.custoTotal.replace('.', 'a');
+                            itin.custoTotal = itin.custoTotal.replace(',', '.');
+                            itin.custoTotal = itin.custoTotal.replace('a', ',');
                           }
                         }
                       }
