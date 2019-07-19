@@ -27,6 +27,7 @@ O sistema, por natureza de utilizar as APIs para seu funcionamento, é instável
 - [x] Basic Login
 - [x] Facebook Login
 - [x] Front-end
+- [ ] Validação de email do usuário
 - [ ] Opção de favoritar um roteiro
 - [ ] Possibilidade de reservar um roteiro pelo próprio sistema
 - [ ] Mostrar atividades possíveis e lugares a visitar nos resultados (API Trip Advisor)
