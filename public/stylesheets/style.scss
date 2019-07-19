@@ -71,6 +71,9 @@ body {
             font-family: $rock;
           }
         }
+        .nav-masthead .nav-link {
+          color: white;
+        }
       }
     }
   }
@@ -90,7 +93,8 @@ body {
       .bg {
         display: flex;
         height: 100%;
-        form, .listing {
+        form,
+        .listing {
           background: white;
           background: #ffffff;
           border-radius: 4px;
@@ -111,7 +115,7 @@ body {
           p {
             text-shadow: none;
           }
-          
+
           input {
             background: none;
             position: relative;
@@ -133,27 +137,49 @@ body {
             background-color: $secondary-color;
             border-color: $secondary-color;
             &.logo {
-                font-family: $rock;
-                float: right;
+              font-family: $rock;
+              float: right;
             }
             &:hover {
               background-color: $primary-color;
               border-color: $primary-color;
             }
-
           }
           .btn-secondary {
             margin-top: $gutter;
             background-color: $primary-color;
-              border-color: $primary-color;
+            border-color: $primary-color;
             &.logo {
-                font-family: $rock;
+              font-family: $rock;
             }
             &:hover {
               background-color: $secondary-color;
-            border-color: $secondary-color;
+              border-color: $secondary-color;
             }
-
+          }
+          .log {
+            flex-wrap: nowrap;
+            flex-direction: column;
+            width: 90%;
+            margin: 0 auto;
+            margin-top: 60px;
+            .logo {
+              min-width: 100px;
+            }
+          }
+          .fb-login-button {
+            background-color: #4267b2;
+            border-color: #4267b2;
+            border-radius: 5px;
+            color: white;
+            height: 40px;
+            text-align: center;
+            max-width: 200px;
+            margin: 0 auto;
+          }
+          .account-message {
+            margin-top: $gutter;
+            text-align: center;
           }
         }
       }
@@ -168,4 +194,7 @@ body {
   position: relative !important;
   overflow-anchor: none !important;
   box-sizing: border-box;
+}
+.error-message{
+  box-sizing: content-box
 }

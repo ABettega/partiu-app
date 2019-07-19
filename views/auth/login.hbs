@@ -1,24 +1,31 @@
-<h2>Login</h2>
-
-<form action="/auth/login" method="POST" id="form-container">
+<div class="bg">
+  
+<form action="/auth/login" method="POST" id="form-container" class="form-signin">
+<h2>Entre na sua conta</h2>
   <label for="username">Username</label>
   <input id="username" type="text" name="username" placeholder="JonSnow">
 
-  <br><br>
+  <br>
 
   <label for="password">Password</label>
   <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
+
   {{#if message }}
     <div class="error-message">{{ message }}</div>
   {{/if}}
-
-  <br><br>
-
-  <button>Login</button> or <a href="/auth/facebook">Log In with Facebook</a>
-
-  <p class="account-message">
+<button class="btn btn-lg btn-primary logo">Login</button> 
+ 
+  <div class="d-flex log">
+    <p class="account-message">
     Don't have an account yet?
     <a href="/auth/signup">Signup</a>
   </p>
+  <a href="/auth/facebook" class="btn btn-md btn-primary fb-login-button">Log In with Facebook</a>
+  
+  
+  </div>
 </form>
+
+</div>
+
+

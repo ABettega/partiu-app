@@ -203,7 +203,9 @@ router.post('/main', (req, res) => {
     })
     .catch(err => console.log(err));
 });
-
+router.get('/login', (req, res, next) => {
+  res.render('auth/login');
+});
 function verificarCidade(airportCode) {
   let retorno = '';
   switch (airportCode) {
