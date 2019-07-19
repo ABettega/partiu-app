@@ -20,6 +20,11 @@ router.get('/main', (req, res) => {
     .catch(err => console.log(err));
 });
 
+
+router.get('/test', (req, res, next) => {
+  res.render('main/result-test');
+});
+
 router.post('/main/favorite', ensureLogin.ensureLoggedIn(), (req, res) => {
   let {
     itinCusto,
