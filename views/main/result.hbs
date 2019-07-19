@@ -12,7 +12,7 @@
   <p id="hotelRating{{this.id}}" value="{{this.hotel.rating}}<">Rating Hotel: {{this.hotel.rating}}</p>
   <p id="hotelReviews{{this.id}}" value="{{this.hotel.reviews}}">Reviews Hotel: {{this.hotel.reviews}}</p>
   <p>Dados Itinerário</p>
-  <p id="itinCusto{{this.id}}" value="{{this.custo}}">Custo Vôos: {{this.custo}}</p>
+  <p id="itinCusto{{this.id}}" value="{{this.custo}}" class="currencySelector">Custo Vôos: {{this.custo}}</p>
   <p id="itinDiaIda{{this.id}}" value="{{this.diaIda}}">Dia de Ida: {{this.diaIda}}</p>
   <p id="itinDiaVolta{{this.id}}" value="{{this.diaVolta}}">Dia de Volta: {{this.diaVolta}}</p>
   <p id="itinOrigem{{this.id}}" value="{{this.origem}}">Origem: {{this.origem}}</p>
@@ -27,6 +27,5 @@
   <p id="voltaFrom{{this.id}}" value="{{this.volta.from}}">Origem Ida: {{this.volta.from}}</p>
   <p id="voltaTo{{this.id}}" value="{{this.volta.to}}">Destino Ida: {{this.volta.to}}</p>
 
-  <button type="submit" id="button{{this.id}}" class="btnEventoSalvar">♥ Favoritar esse roteiro ♥</button>
   {{/if}}
 {{/each}}
