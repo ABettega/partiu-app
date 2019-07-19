@@ -4,7 +4,7 @@
 [O Partiu!](https://partiu--app.herokuapp.com) nasceu para atender um público que cresce a cada dia. Os nossos usuários vão desde gastrônomos a famílias inteiras, cada um com um interesse diferente. Nós temos o objetivo de atender a todos.
 
 ### Como funciona?
-O usuário, já na tela inicial, preenche seu orçamento disponível para a viagem, as datas em que poderá viajar, e por fim os interesses que o levam a viajar. O sistema faz buscas em sites parceiros para encontrar a melhor experiência para o usuário, e mostra roteiros selecionados para diversos lugares baseados no interesse selecionado.
+O usuário, já na tela inicial, preenche seu orçamento disponível para a viagem, as datas em que poderá viajar, e por fim os interesses que o levam a viajar. O **Partiu!** faz buscas em sites parceiros para encontrar a melhor experiência para o usuário, para mostrar roteiros selecionados baseados no interesse do usuário.
 
 ## Detalhes do desenvolvimento
 ### Features
@@ -15,8 +15,8 @@ O usuário, já na tela inicial, preenche seu orçamento disponível para a viag
 - Utilização da biblioteca [async](https://caolan.github.io/async/v3/) para chamadas simultâneas e assíncronas das APIs
 - Front-end com [Bootstrap](https://getbootstrap.com/)
 - Social Login com Facebook via [Passport](http://www.passportjs.org/docs/facebook/)
-### Dificuldades
-O sistema, por natureza de utilizar as APIs para seu funcionamento, é instável. As APIs falham muito, às vezes travando o sitema e às vezes não trazendo nenhum resultado, ou resultados inconsistentes. Esses problemas seriam resolvidos ao utilizar uma API profissional, paga. Na situação atual, não é um sistema funcional.
+### Challenges
+O sistema, por natureza de utilizar as APIs para seu funcionamento, é instável. As APIs falham muito, às vezes travando o sitema e às vezes não trazendo nenhum resultado, ou resultados inconsistentes. Esses problemas seriam resolvidos ao utilizar uma API profissional, paga.
 ### Roadmap
 - [x] Setup básico do sistema, mostrar os inputs de orçamento e datas
 - [x] Realizar a busca pela API de vôos
