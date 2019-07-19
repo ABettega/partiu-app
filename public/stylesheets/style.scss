@@ -50,8 +50,11 @@ body {
         justify-content: space-between;
         width: 100%;
         a {
+
+          text-decoration: none;
           &.logo {
             color: $secondary-color;
+            text-decoration: none;
             font-family: $rock;
           }
         }
@@ -81,7 +84,6 @@ body {
           padding: 32px;
           padding-bottom: 24px;
           width: 441px;
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
           box-sizing: content-box;
           & > div {
             margin: $gutter 0;
@@ -170,13 +172,19 @@ body {
       }
       .search-bg {
         @at-root {
-          .html {
+          html {
             background: url("./../imgs/exotic.jpg") no-repeat center;
           }
         }
       }
       .results {
         margin: 80px;
+        .card-img {
+          border-top-right-radius: none;
+          border-bottom-right-radius: none;
+          height: 100%;
+          width: auto;
+        }
         .fa-bookmark {
           position: absolute;
           right: 20px;
@@ -187,8 +195,18 @@ body {
         a {
           color: $secondary-color !important;
         }
+
       }
     }
+  }
+}
+
+.total {
+  font-size: 20px;
+  text-align: right;
+  color: $secondary-color;
+  span {
+    color: #767676;
   }
 }
 

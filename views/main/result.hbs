@@ -6,13 +6,13 @@
     {{#if this.hotel.precoTotal}}
     <div class="card mb-3">
       <div class="row no-gutters">
-        <div class="col-md-4">
+        <div class="col-md-5">
           <img id="hotelFoto{{this.id}}" src="{{this.hotel.foto}}" class="card-img" alt="...">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-7">
           <div class="card-body d-flex flex-column">
 
-            <h3 class="card-title mb-0" id="hotelCidade{{this.id}}">{{this.hotel.cidade}}</h3>
+            <h3 class="card-title mb-0" id="hotelCidade{{this.id}}">{{this.destino}}</h3>
             <small class="text-muted" id="itinDiaIda{{this.id}}" value="{{this.diaIda}}">{{this.diaIda}}</small>
             <small class="text-muted" id="itinDiaVolta{{this.id}}" value="{{this.diaVolta}}"> - {{this.diaVolta}}</small>
             <a href="{{this.hotel.linkAcesso}}" id="hotelLink{{this.id}}">
@@ -21,21 +21,13 @@
             <small id="hotelEstrelas{{this.id}}" value="{{this.hotel.estrelas}}">{{this.hotel.estrelas}}
               Estrelas</small>
             <small id="hotelRating{{this.id}}" value="{{this.hotel.rating}}<"> - {{this.hotel.rating}}</small>
-            <p id="hotelPreco{{this.id}}" v alue="{{this.hotel.precoTotal}}">Hotel R${{this.hotel.precoTotal}}</p>
+              <p id="hotelPreco{{this.id}}" v alue="{{this.hotel.precoTotal}}">Hotel R${{this.hotel.precoTotal}}</p>
              <p id="itinCusto{{this.id}}" value="{{this.custo}}">Passagem R${{this.custo}}</p>
-            <p id="itinCustoTotal{{this.id}}" value="{{this.custoTotal}}" class="logo">Total R$ {{this.custoTotal}}</p>
+            <p id="itinCustoTotal{{this.id}}" value="{{this.custoTotal}}" class="total"> <span>Partiu por </span> R$ {{this.custoTotal}}</p>
+            {{!-- <a href=""><i class="far fa-bookmark"></i></a> --}}
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card-body d-flex flex-column">
-            <a href=""><i class="far fa-bookmark"></i></a>
 
-            <p class="card-text">
-             
-
-            </p>
-          </div>
-        </div>
       </div>
     </div>
 
