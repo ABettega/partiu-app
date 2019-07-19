@@ -12,41 +12,25 @@ $primary-color: #00164d;
 $secondary-color: #ed1650;
 $gutter: 20px;
 
-// body {
-//   margin: 0;
-//   padding: 0;
-//   font-family: 'Noto Sans', sans-serif;
-// }
-// .admin {
-//   background: gray;
-// }
-// .logged {
-//   background: lightcoral;
-//   background-color: yellow;
-// }
-// .bd-navbar {
-//   background: $primary-color;
-// }
-// .navbar-dark .navbar-nav .nav-link {
-//     color: white;
-//
-// }
-// header {
-//     .btn {
-//         color: white;
-//     }
-// }
 
 $imgKey: random(5);
 
 $list: urban, nature, exotic, art, history;
 $nth: nth($list, $imgKey);
 
+html {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background: url("./../imgs/bg.jpg") no-repeat center;
+  background-attachment: fixed;
+  background-size: cover;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: $maven;
   text-shadow: none;
+  background: transparent;
   .menu {
     width: 100% !important;
     height: 64px !important;
@@ -82,10 +66,7 @@ body {
     min-height: unset;
     max-width: 100%;
     .cover {
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-      background: url("./../imgs/exotic.jpg") no-repeat center;
-      background-size: cover;
+      
       display: inline-block;
       vertical-align: bottom;
       height: 100%;
@@ -96,7 +77,6 @@ body {
         form,
         .listing {
           background: white;
-          background: #ffffff;
           border-radius: 4px;
           padding: 32px;
           padding-bottom: 24px;
@@ -111,6 +91,11 @@ body {
             label {
               width: 48%;
             }
+          }
+          &.bigger {
+            width: 70%;
+            max-width: 90%;
+            box-sizing: content-box;
           }
           p {
             text-shadow: none;
@@ -181,6 +166,26 @@ body {
             margin-top: $gutter;
             text-align: center;
           }
+        }
+      }
+      .search-bg {
+        @at-root {
+          .html {
+            background: url("./../imgs/exotic.jpg") no-repeat center;
+          }
+        }
+      }
+      .results {
+        margin: 80px;
+        .fa-bookmark {
+          position: absolute;
+          right: 20px;
+        }
+        small{
+          display: contents;
+        }
+        a {
+          color: $secondary-color !important;
         }
       }
     }

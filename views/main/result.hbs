@@ -1,32 +1,73 @@
-<h2>Results</h2>
+<div class="bg results">
+  <div class="listing form-signin bigger">
+    <h2>Resultados</h2>
 
-{{#each itins}}
-  {{#if this.hotel.precoTotal}}
-  <p>Dados Hotel</p>
-  <p id="hotelLink{{this.id}}" value="{{this.hotel.linkAcesso}}">Link Hotel: {{this.hotel.linkAcesso}}</p>
-  <p id="hotelFoto{{this.id}}" value="{{this.hotel.foto}}">URL Foto Hotel: {{this.hotel.foto}}</p>
-  <p id="hotelNome{{this.id}}" value="{{this.hotel.nomeHotel}}">Nome Hotel: {{this.hotel.nomeHotel}}</p>
-  <p id="hotelCidade{{this.id}}" value="{{this.hotel.cidade}}">Cidade Hotel: {{this.hotel.cidade}}</p>
-  <p id="hotelPreco{{this.id}}" value="{{this.hotel.precoTotal}}">Preço Hotel: {{this.hotel.precoTotal}}</p>
-  <p id="hotelEstrelas{{this.id}}" value="{{this.hotel.estrelas}}">Estrelas Hotel: {{this.hotel.estrelas}}</p>
-  <p id="hotelRating{{this.id}}" value="{{this.hotel.rating}}<">Rating Hotel: {{this.hotel.rating}}</p>
-  <p id="hotelReviews{{this.id}}" value="{{this.hotel.reviews}}">Reviews Hotel: {{this.hotel.reviews}}</p>
-  <p>Dados Itinerário</p>
-  <p id="itinCusto{{this.id}}" value="{{this.custo}}">Custo Vôos: {{this.custo}}</p>
-  <p id="itinDiaIda{{this.id}}" value="{{this.diaIda}}">Dia de Ida: {{this.diaIda}}</p>
-  <p id="itinDiaVolta{{this.id}}" value="{{this.diaVolta}}">Dia de Volta: {{this.diaVolta}}</p>
-  <p id="itinOrigem{{this.id}}" value="{{this.origem}}">Origem: {{this.origem}}</p>
-  <p id="itinDestino{{this.id}}" value="{{this.destino}}">Destino: {{this.destino}}</p>
-  <p>Dados Voo Ida</p>
-  <p id="idaPreco{{this.id}}" value="{{this.ida.price}}">Preço Ida: {{this.ida.price}}</p>
-  <p id="idaFrom{{this.id}}" value="{{this.ida.from}}">Origem Ida: {{this.ida.from}}</p>
-  <p id="idaTo{{this.id}}" value="{{this.ida.to}}">Destino Ida: {{this.ida.to}}</p>
+    {{#each itins}}
+    {{#if this.hotel.precoTotal}}
+    <div class="card mb-3">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img id="hotelFoto{{this.id}}" src="{{this.hotel.foto}}" class="card-img" alt="...">
+        </div>
+        <div class="col-md-4">
+          <div class="card-body d-flex flex-column">
 
-  <p>Dados Voo Volta</p>
-  <p id="voltaPreco{{this.id}}" value="{{this.volta.price}}">Preço Ida: {{this.volta.price}}</p>
-  <p id="voltaFrom{{this.id}}" value="{{this.volta.from}}">Origem Ida: {{this.volta.from}}</p>
-  <p id="voltaTo{{this.id}}" value="{{this.volta.to}}">Destino Ida: {{this.volta.to}}</p>
+            <h3 class="card-title mb-0" id="hotelCidade{{this.id}}">{{this.hotel.cidade}}</h3>
+            <small class="text-muted" id="itinDiaIda{{this.id}}" value="{{this.diaIda}}">{{this.diaIda}}</small>
+            <small class="text-muted" id="itinDiaVolta{{this.id}}" value="{{this.diaVolta}}"> - {{this.diaVolta}}</small>
+            <a href="{{this.hotel.linkAcesso}}" id="hotelLink{{this.id}}">
+              <h5 id="hotelNome{{this.id}}" value="{{this.hotel.nomeHotel}}">{{this.hotel.nomeHotel}}</h5>
+            </a>
+            <small id="hotelEstrelas{{this.id}}" value="{{this.hotel.estrelas}}">{{this.hotel.estrelas}}
+              Estrelas</small>
+            <small id="hotelRating{{this.id}}" value="{{this.hotel.rating}}<"> - {{this.hotel.rating}}</small>
+            <p id="hotelPreco{{this.id}}" v alue="{{this.hotel.precoTotal}}">R${{this.hotel.precoTotal}}</p>
 
-  <button type="submit" id="button{{this.id}}" class="btnEventoSalvar">♥ Favoritar esse roteiro ♥</button>
-  {{/if}}
-{{/each}}
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-body d-flex flex-column">
+            <a href=""><i class="far fa-bookmark"></i></a>
+
+            <p class="card-text">
+              <p id="itinCusto{{this.id}}" value="{{this.custo}}">Custo Vôos: R${{this.custo}}</p>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/if}}
+    {{/each}}
+
+  </div>
+</div>
+{{!-- 
+
+<p>Dados Hotel</p>
+//<p id="hotelLink{{this.id}}" value="{{this.hotel.linkAcesso}}">Link Hotel: {{this.hotel.linkAcesso}}</p>
+//<p id="hotelFoto{{this.id}}" value="{{this.hotel.foto}}">URL Foto Hotel: {{this.hotel.foto}}</p>
+//<p id="hotelNome{{this.id}}" value="{{this.hotel.nomeHotel}}">Nome Hotel: {{this.hotel.nomeHotel}}</p>
+//<p id="hotelCidade{{this.id}}" value="{{this.hotel.cidade}}">Cidade Hotel: {{this.hotel.cidade}}</p>
+//<p id="hotelPreco{{this.id}}" value="{{this.hotel.precoTotal}}">Preço Hotel: {{this.hotel.precoTotal}}</p>
+<p id="hotelEstrelas{{this.id}}" value="{{this.hotel.estrelas}}">Estrelas Hotel: {{this.hotel.estrelas}}</p>
+<p id="hotelRating{{this.id}}" value="{{this.hotel.rating}}<">Rating Hotel: {{this.hotel.rating}}</p>
+<p id="hotelReviews{{this.id}}" value="{{this.hotel.reviews}}">Reviews Hotel: {{this.hotel.reviews}}</p>
+<p>Dados Itinerário</p>
+<p id="itinCusto{{this.id}}" value="{{this.custo}}">Custo Vôos: {{this.custo}}</p>
+<p id="itinDiaIda{{this.id}}" value="{{this.diaIda}}">Dia de Ida: {{this.diaIda}}</p>
+<p id="itinDiaVolta{{this.id}}" value="{{this.diaVolta}}">Dia de Volta: {{this.diaVolta}}</p>
+<p id="itinOrigem{{this.id}}" value="{{this.origem}}">Origem: {{this.origem}}</p>
+<p id="itinDestino{{this.id}}" value="{{this.destino}}">Destino: {{this.destino}}</p>
+<p>Dados Voo Ida</p>
+<p id="idaPreco{{this.id}}" value="{{this.ida.price}}">Preço Ida: {{this.ida.price}}</p>
+<p id="idaFrom{{this.id}}" value="{{this.ida.from}}">Origem Ida: {{this.ida.from}}</p>
+<p id="idaTo{{this.id}}" value="{{this.ida.to}}">Destino Ida: {{this.ida.to}}</p>
+
+<p>Dados Voo Volta</p>
+<p id="voltaPreco{{this.id}}" value="{{this.volta.price}}">Preço Ida: {{this.volta.price}}</p>
+<p id="voltaFrom{{this.id}}" value="{{this.volta.from}}">Origem Ida: {{this.volta.from}}</p>
+<p id="voltaTo{{this.id}}" value="{{this.volta.to}}">Destino Ida: {{this.volta.to}}</p>
+
+<button type="submit" id="button{{this.id}}" class="btnEventoSalvar">♥ Favoritar esse roteiro ♥</button> --}}
