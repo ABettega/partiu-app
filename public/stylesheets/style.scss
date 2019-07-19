@@ -12,7 +12,6 @@ $primary-color: #00164d;
 $secondary-color: #ed1650;
 $gutter: 20px;
 
-
 $imgKey: random(5);
 
 $list: urban, nature, exotic, art, history;
@@ -21,7 +20,7 @@ $nth: nth($list, $imgKey);
 html {
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  background: url("./../imgs/bg.jpg") no-repeat center;
+  background: url("./../imgs/nature.jpg") no-repeat center;
   background-attachment: fixed;
   background-size: cover;
 }
@@ -50,7 +49,6 @@ body {
         justify-content: space-between;
         width: 100%;
         a {
-
           text-decoration: none;
           &.logo {
             color: $secondary-color;
@@ -69,7 +67,6 @@ body {
     min-height: unset;
     max-width: 100%;
     .cover {
-      
       display: inline-block;
       vertical-align: bottom;
       height: 100%;
@@ -98,6 +95,10 @@ body {
             width: 70%;
             max-width: 90%;
             box-sizing: content-box;
+            @media (max-width: 576px) {
+              width: 100%;
+              max-width: 100%;
+            }
           }
           p {
             text-shadow: none;
@@ -170,32 +171,27 @@ body {
           }
         }
       }
-      .search-bg {
-        @at-root {
-          html {
-            background: url("./../imgs/exotic.jpg") no-repeat center;
-          }
-        }
-      }
+      
       .results {
         margin: 80px;
         .card-img {
-          border-top-right-radius: none;
-          border-bottom-right-radius: none;
-          height: 100%;
-          width: auto;
+          @media (min-width: 576px) {
+            height: 100%;
+            width: auto;
+            border-top-right-radius: unset;
+            border-bottom-right-radius: unset;
+          }
         }
         .fa-bookmark {
           position: absolute;
           right: 20px;
         }
-        small{
+        small {
           display: contents;
         }
         a {
           color: $secondary-color !important;
         }
-
       }
     }
   }
@@ -203,8 +199,11 @@ body {
 
 .total {
   font-size: 20px;
-  text-align: right;
+  
   color: $secondary-color;
+  @media (min-width: 576px) {
+    text-align: right;
+  }
   span {
     color: #767676;
   }
@@ -218,6 +217,43 @@ body {
   overflow-anchor: none !important;
   box-sizing: border-box;
 }
-.error-message{
-  box-sizing: content-box
+.error-message {
+  box-sizing: content-box;
+}
+
+
+
+body {
+  @at-root {
+    html {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background: url("./../imgs/urban.jpg") no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  }
+}
+.admin {
+  @at-root {
+    html {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background: url("./../imgs/urban.jpg") no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  }
+}
+.search-bg {
+  @at-root {
+    html {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      background: url("./../imgs/exotic.jpg") no-repeat center;
+      background-attachment: fixed;
+      background-size: cover;
+      
+    }
+  }
 }
